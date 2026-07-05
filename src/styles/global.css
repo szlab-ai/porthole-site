@@ -4,7 +4,7 @@
  * Semantic color tokens as Tailwind v4 @theme entries.
  * Brief specified a Tailwind v3 tailwind.config.mjs with theme.extend.colors
  * (bg/ink/muted/line/accent/card mapped to var(--bg) etc). Adapted to Tailwind v4's
- * CSS-native @theme config (no tailwind.config.mjs in v4) - see task-1-report.md.
+ * CSS-native @theme config (Tailwind v4 has no tailwind.config.mjs; theme tokens live here in @theme).
  * A color token named --color-NAME generates bg-NAME, text-NAME and border-NAME
  * utilities; --max-width-NAME generates max-w-NAME; --font-NAME generates font-NAME.
  */
