@@ -1,0 +1,11 @@
+---
+const { lang } = Astro.props;
+const path = Astro.url.pathname;                      // 形如 /porthole-site/en/support/
+const toEn = path.replace(/\/(en|zh)(\/|$)/, '/en$2');
+const toZh = path.replace(/\/(en|zh)(\/|$)/, '/zh$2');
+---
+<div class="text-sm flex items-center gap-1.5">
+  <a href={toEn} class={lang==='en' ? 'font-semibold text-accent' : 'text-muted hover:text-ink'}>EN</a>
+  <span class="text-line">/</span>
+  <a href={toZh} class={lang==='zh' ? 'font-semibold text-accent' : 'text-muted hover:text-ink'}>中文</a>
+</div>
