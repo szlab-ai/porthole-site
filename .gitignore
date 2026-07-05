@@ -8,8 +8,9 @@ dist/
 .env.*
 !.env.example
 
-# 本地内部笔记（不发布）
+# 本地内部笔记 / 设计文档（不发布）
 *.local.md
+docs/superpowers/
 
 # OS / editor
 .DS_Store
