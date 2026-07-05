@@ -1,4 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
+import VideoSection from '../../components/VideoSection.astro';
+import Features from '../../components/Features.astro';
+import Screenshots from '../../components/Screenshots.astro';
+import TrustBar from '../../components/TrustBar.astro';
+const lang = 'en';
 ---
-<BaseLayout title="Porthole" lang="en"><p class="mx-auto max-w-5xl px-5 py-10">chrome ok</p></BaseLayout>
+<BaseLayout title="Porthole — Telegram on Apple TV" lang={lang}>
+  <Hero lang={lang} /><VideoSection lang={lang} /><Features lang={lang} /><Screenshots lang={lang} /><TrustBar lang={lang} />
+</BaseLayout>

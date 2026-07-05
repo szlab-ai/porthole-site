@@ -1,0 +1,21 @@
+---
+import { useTranslations } from '../i18n/utils';
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const feats = [
+  { i:'📺', k:'browse' }, { i:'🖼️', k:'media' }, { i:'⚡', k:'stream' },
+  { i:'🕹️', k:'focus' }, { i:'🌗', k:'theme' }, { i:'🔒', k:'privacy' },
+];
+---
+<section id="features" class="mx-auto max-w-5xl scroll-mt-16 px-5 py-16">
+  <h2 class="mb-10 text-center text-2xl font-semibold">{t('features.heading')}</h2>
+  <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {feats.map((f) => (
+      <div class="rounded-2xl border border-line bg-card p-6">
+        <div class="mb-3 text-2xl">{f.i}</div>
+        <h3 class="font-semibold">{t(`feat.${f.k}.title`)}</h3>
+        <p class="mt-1 text-sm text-muted">{t(`feat.${f.k}.desc`)}</p>
+      </div>
+    ))}
+  </div>
+</section>

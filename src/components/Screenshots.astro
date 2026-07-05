@@ -1,0 +1,16 @@
+---
+import { useTranslations } from '../i18n/utils';
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+<section class="mx-auto max-w-5xl px-5 py-16">
+  <h2 class="mb-10 text-center text-2xl font-semibold">{t('shots.heading')}</h2>
+  <div class="grid gap-4 sm:grid-cols-2">
+    {[1,2,3,4].map(() => (
+      <div class="grid aspect-video place-items-center rounded-xl border border-line bg-card text-muted">
+        <span class="text-sm">Screenshot</span>
+      </div>
+    ))}
+  </div>
+  <!-- 用户提供截图后，替换占位块为 <img>（Apple TV 截图 16:9） -->
+</section>
