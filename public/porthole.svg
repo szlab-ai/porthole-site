@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="256 0 768 768" width="768" height="768">
+  <defs>
+    <linearGradient id="pg-ocean" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#123B55"/><stop offset=".55" stop-color="#0C2740"/><stop offset="1" stop-color="#07182A"/>
+    </linearGradient>
+    <radialGradient id="pg-topglow" cx=".5" cy="0" r=".82">
+      <stop offset="0" stop-color="#3E93AE" stop-opacity=".6"/><stop offset="1" stop-color="#3E93AE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pg-glass" cx=".5" cy=".4" r=".64">
+      <stop offset="0" stop-color="#1E5772"/><stop offset=".72" stop-color="#0B2A40"/><stop offset="1" stop-color="#061826"/>
+    </radialGradient>
+    <radialGradient id="pg-glass-top" cx=".5" cy=".12" r=".5">
+      <stop offset="0" stop-color="#7FB4C9" stop-opacity=".32"/><stop offset="1" stop-color="#7FB4C9" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pg-vignette" cx=".5" cy=".5" r=".5">
+      <stop offset=".62" stop-color="#000000" stop-opacity="0"/><stop offset="1" stop-color="#02080F" stop-opacity=".55"/>
+    </radialGradient>
+    <linearGradient id="pg-bubble" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F9F0DA"/><stop offset="1" stop-color="#E3C173"/>
+    </linearGradient>
+    <linearGradient id="pg-bubble-hi" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity=".7"/><stop offset=".55" stop-color="#FFFFFF" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="pg-reflect" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#EAF6FF" stop-opacity=".5"/><stop offset="1" stop-color="#EAF6FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="pg-brass" x1=".14" y1="0" x2=".86" y2="1">
+      <stop offset="0" stop-color="#8A671F"/><stop offset=".26" stop-color="#EFD68E"/><stop offset=".5" stop-color="#C39A3E"/>
+      <stop offset=".74" stop-color="#E3BF69"/><stop offset="1" stop-color="#5A4118"/>
+    </linearGradient>
+    <radialGradient id="pg-band-spec" cx=".34" cy=".22" r=".5">
+      <stop offset="0" stop-color="#FFF7DE" stop-opacity=".85"/><stop offset=".5" stop-color="#FFF7DE" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pg-band-occ" cx=".72" cy=".82" r=".45">
+      <stop offset="0" stop-color="#2A1D07" stop-opacity=".6"/><stop offset="1" stop-color="#2A1D07" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="pg-rivet" cx=".35" cy=".3" r=".85">
+      <stop offset="0" stop-color="#FBEEBC"/><stop offset=".5" stop-color="#CBA149"/><stop offset="1" stop-color="#5E440E"/>
+    </radialGradient>
+    <clipPath id="pg-glass-clip"><circle cx="640" cy="384" r="280"/></clipPath>
+    <clipPath id="pg-band-clip">
+      <path fill-rule="evenodd" d="M640,54 A330,330 0 1,1 640,714 A330,330 0 1,1 640,54 Z M640,104 A280,280 0 1,1 640,664 A280,280 0 1,1 640,104 Z"/>
+    </clipPath>
+    <filter id="pg-glow" x="-40%" y="-40%" width="180%" height="180%">
+      <feGaussianBlur stdDeviation="7" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="pg-inner-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+  </defs>
+
+  <!-- ===== layer-back : undersea background (opaque) ===== -->
+  <g id="layer-back">
+    <rect width="1280" height="768" fill="url(#pg-ocean)"/>
+    <rect width="1280" height="768" fill="url(#pg-topglow)"/>
+  </g>
+
+  <!-- ===== layer-mid : glass interior + single bubble (alpha, clipped to glass) ===== -->
+  <g id="layer-mid" clip-path="url(#pg-glass-clip)">
+    <circle cx="640" cy="384" r="280" fill="url(#pg-glass)"/>
+    <rect width="1280" height="768" fill="url(#pg-glass-top)"/>
+    <!-- faint floating particles -->
+    <circle cx="742" cy="486" r="6" fill="#CDE8F2" opacity=".14"/>
+    <circle cx="556" cy="520" r="4.5" fill="#CDE8F2" opacity=".12"/>
+    <circle cx="700" cy="300" r="3.5" fill="#CDE8F2" opacity=".13"/>
+    <circle cx="512" cy="430" r="3" fill="#CDE8F2" opacity=".11"/>
+    <!-- message bubble -->
+    <g filter="url(#pg-glow)">
+      <path d="M604,432 L604,486 L556,432 Z" fill="url(#pg-bubble)"/>
+      <rect x="540" y="286" width="200" height="150" rx="40" fill="url(#pg-bubble)"/>
+    </g>
+    <rect x="540" y="286" width="200" height="88" rx="40" fill="url(#pg-bubble-hi)"/>
+    <rect x="574" y="330" width="132" height="16" rx="8" fill="#A9791F" opacity=".55"/>
+    <rect x="574" y="364" width="96" height="16" rx="8" fill="#A9791F" opacity=".45"/>
+    <!-- diagonal glass reflection -->
+    <ellipse cx="540" cy="272" rx="250" ry="150" transform="rotate(-28 540 272)" fill="url(#pg-reflect)"/>
+    <!-- edge vignette for depth -->
+    <circle cx="640" cy="384" r="280" fill="url(#pg-vignette)"/>
+    <!-- inner shadow cast by the ring onto glass -->
+    <circle cx="640" cy="384" r="272" fill="none" stroke="#02090F" stroke-width="20" opacity=".5" filter="url(#pg-inner-shadow)"/>
+  </g>
+
+  <!-- ===== layer-front : brass ring + rivets (alpha) ===== -->
+  <g id="layer-front">
+    <path fill-rule="evenodd" fill="url(#pg-brass)"
+      d="M640,54 A330,330 0 1,1 640,714 A330,330 0 1,1 640,54 Z M640,104 A280,280 0 1,1 640,664 A280,280 0 1,1 640,104 Z"/>
+    <!-- rounded-band shading: top-left specular sheen + bottom-right occlusion, clipped to the band -->
+    <g clip-path="url(#pg-band-clip)">
+      <rect width="1280" height="768" fill="url(#pg-band-occ)"/>
+      <rect width="1280" height="768" fill="url(#pg-band-spec)"/>
+    </g>
+    <!-- crisp bevel edges -->
+    <circle cx="640" cy="384" r="329" fill="none" stroke="#3C2B0F" stroke-width="3" opacity=".55"/>
+    <circle cx="640" cy="384" r="326" fill="none" stroke="#FBEEBC" stroke-width="2.5" opacity=".5"/>
+    <circle cx="640" cy="384" r="282" fill="none" stroke="#2A1D07" stroke-width="7" opacity=".6"/>
+    <circle cx="640" cy="384" r="277" fill="none" stroke="#FBEEBC" stroke-width="2.5" opacity=".4"/>
+    <!-- rivets -->
+    <g>
+      <circle cx="945" cy="384" r="12.5" fill="url(#pg-rivet)"/>
+      <circle cx="904" cy="537" r="12.5" fill="url(#pg-rivet)"/>
+      <circle cx="793" cy="648" r="12.5" fill="url(#pg-rivet)"/>
+      <circle cx="640" cy="689" r="12.5" fill="url(#pg-rivet)"/>
+      <circle cx="487" cy="648" r="12.5" fill="url(#pg-rivet)"/>
+      <circle cx="376" cy="537" r="12.5" fill="url(#pg-rivet)"/>
+      <circle cx="335" cy="384" r="12.5" fill="url(#pg-rivet)"/>
+      <circle cx="376" cy="231" r="12.5" fill="url(#pg-rivet)"/>
+      <circle cx="487" cy="120" r="12.5" fill="url(#pg-rivet)"/>
+      <circle cx="640" cy="79" r="12.5" fill="url(#pg-rivet)"/>
+      <circle cx="793" cy="120" r="12.5" fill="url(#pg-rivet)"/>
+      <circle cx="904" cy="231" r="12.5" fill="url(#pg-rivet)"/>
+    </g>
+  </g>
+</svg>
