@@ -2,15 +2,43 @@
 import { useTranslations } from '../i18n/utils';
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL;
+
+// 5 张成品展示图，按用户给定顺序。alt 按语言本地化（便于读屏；图内标题为英文烘焙）。
+const shots = ['01-big-screen', '02-videos', '03-photos', '04-pdf', '05-light-dark'];
+const alt: Record<'en' | 'zh', string[]> = {
+  en: [
+    'Chat list and an open channel on the big screen',
+    'Full-screen video playback on Apple TV',
+    'Full-screen photo viewer',
+    'Reading a PDF document on the TV',
+    'The chat list in light mode',
+  ],
+  zh: [
+    '大屏上的会话列表与打开的频道',
+    'Apple TV 上的全屏视频播放',
+    '全屏图片查看',
+    '在电视上阅读 PDF 文档',
+    '浅色模式下的会话列表',
+  ],
+};
 ---
 <section class="mx-auto max-w-5xl px-5 py-16">
   <h2 class="mb-10 text-center text-2xl font-semibold">{t('shots.heading')}</h2>
-  <div class="grid gap-4 sm:grid-cols-2">
-    {[1,2,3,4].map(() => (
-      <div class="grid aspect-video place-items-center rounded-xl border border-line bg-card text-muted">
-        <span class="text-sm">{t('shots.placeholder')}</span>
-      </div>
+  <div class="space-y-6">
+    {shots.map((s, i) => (
+      <picture>
+        <source srcset={`${base}screenshots/${s}.webp`} type="image/webp" />
+        <img
+          src={`${base}screenshots/${s}.jpg`}
+          alt={alt[lang][i]}
+          width="1920"
+          height="1080"
+          loading="lazy"
+          decoding="async"
+          class="aspect-video w-full rounded-2xl border border-line"
+        />
+      </picture>
     ))}
   </div>
-  <!-- 用户提供截图后，替换占位块为 <img>（Apple TV 截图 16:9） -->
 </section>

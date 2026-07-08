@@ -2,11 +2,17 @@
 import { useTranslations } from '../i18n/utils';
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const base = import.meta.env.BASE_URL;
 ---
 <section class="mx-auto max-w-4xl px-5 py-12">
   <h2 class="mb-6 text-center text-2xl font-semibold">{t('video.heading')}</h2>
-  <div class="grid aspect-video place-items-center rounded-2xl border border-line bg-card text-muted">
-    <span>▶ {t('video.placeholder')}</span>
-  </div>
-  <!-- 用户提供讲解视频后，替换为 <video>/<iframe>；保持 aspect-video 容器 -->
+  <video
+    class="aspect-video w-full rounded-2xl border border-line bg-card"
+    controls
+    playsinline
+    preload="metadata"
+    poster={`${base}video/poster.jpg`}
+  >
+    <source src={`${base}video/demo.mp4`} type="video/mp4" />
+  </video>
 </section>
