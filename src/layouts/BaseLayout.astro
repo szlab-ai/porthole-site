@@ -2,17 +2,43 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-const { title, lang } = Astro.props;
+const { title, description, lang } = Astro.props;
 const base = import.meta.env.BASE_URL;
+const site = Astro.site ?? Astro.url.origin;
+const canonical = new URL(Astro.url.pathname, site);
+const enURL = new URL(Astro.url.pathname.replace(/\/(en|zh)(\/|$)/, '/en$2'), site);
+const zhURL = new URL(Astro.url.pathname.replace(/\/(en|zh)(\/|$)/, '/zh$2'), site);
+const socialImage = new URL(`${base}brand/porthole.png`, site);
+const ogLocale = lang === 'zh' ? 'zh_CN' : 'en_US';
+const alternateLocale = lang === 'zh' ? 'en_US' : 'zh_CN';
+const socialImageAlt = lang === 'zh' ? 'Porthole 应用图标' : 'Porthole app icon';
 ---
 <!doctype html>
 <html lang={lang === 'zh' ? 'zh-Hans' : 'en'}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical.href} />
+  <link rel="alternate" hreflang="en" href={enURL.href} />
+  <link rel="alternate" hreflang="zh-Hans" href={zhURL.href} />
+  <link rel="alternate" hreflang="x-default" href={enURL.href} />
   <link rel="icon" href={`${base}brand/favicon.ico`} sizes="any" />
   <link rel="icon" type="image/png" href={`${base}brand/icon-32.png`} sizes="32x32" />
   <link rel="apple-touch-icon" href={`${base}brand/apple-touch-icon.png`} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Porthole" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical.href} />
+  <meta property="og:locale" content={ogLocale} />
+  <meta property="og:locale:alternate" content={alternateLocale} />
+  <meta property="og:image" content={socialImage.href} />
+  <meta property="og:image:alt" content={socialImageAlt} />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={socialImage.href} />
   <title>{title}</title>
 </head>
 <body class="bg-bg font-sans text-ink antialiased">

@@ -5,6 +5,7 @@
 // 无感，无 JS 时靠 content="0" 的 meta 兜底。body 留空，避免出现可见的
 // “Redirecting…” 文字。canonical 指向 /en/，root 本身 noindex。
 const target = `${import.meta.env.BASE_URL}en/`;
+const canonical = new URL(target, Astro.site ?? Astro.url.origin);
 ---
 <!doctype html>
 <html lang="en">
@@ -13,7 +14,7 @@ const target = `${import.meta.env.BASE_URL}en/`;
   <title>Porthole</title>
   <meta name="robots" content="noindex" />
   <meta http-equiv="refresh" content={`0; url=${target}`} />
-  <link rel="canonical" href={target} />
+  <link rel="canonical" href={canonical.href} />
   <script is:inline set:html={`location.replace(${JSON.stringify(target)})`}></script>
 </head>
 <body></body>

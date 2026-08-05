@@ -7,6 +7,10 @@ import Screenshots from '../../components/Screenshots.astro';
 import TrustBar from '../../components/TrustBar.astro';
 const lang = 'en';
 ---
-<BaseLayout title="Porthole — Telegram on Apple TV" lang={lang}>
+<BaseLayout
+  title="Porthole — Telegram on Apple TV"
+  description="Porthole is an unofficial Telegram viewer designed for Apple TV, with support for chats, photos, videos, voice messages, and documents."
+  lang={lang}
+>
   <Hero lang={lang} /><VideoSection lang={lang} /><Features lang={lang} /><Screenshots lang={lang} /><TrustBar lang={lang} />
 </BaseLayout>

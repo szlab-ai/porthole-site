@@ -8,7 +8,10 @@ const home = `${base}${lang}/`;
 ---
 <header class="sticky top-0 z-10 border-b border-line bg-bg/90 backdrop-blur">
   <nav class="mx-auto flex max-w-5xl items-center justify-between px-5 py-3">
-    <a href={home} class="text-lg font-bold tracking-tight">Porthole</a>
+    <a href={home} class="inline-flex items-center gap-2 text-lg font-bold tracking-tight">
+      <img src={`${base}brand/porthole.png`} alt="" width="28" height="28" class="h-7 w-7 rounded-md" />
+      <span>Porthole</span>
+    </a>
     <div class="flex items-center gap-5 text-sm">
       <a href={`${home}#features`} class="text-muted hover:text-ink">{t('nav.features')}</a>
       <a href={`${base}${lang}/support/`} class="text-muted hover:text-ink">{t('nav.support')}</a>
