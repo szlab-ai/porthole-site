@@ -36,6 +36,12 @@ The project is configured for the `/porthole-site/` GitHub Pages base path. Engl
 
 Pushes to `main` trigger [the GitHub Pages workflow](.github/workflows/deploy.yml), which builds the Astro site and deploys it to GitHub Pages. The site intentionally continues to use its current GitHub Pages URL rather than a custom domain.
 
-Porthole does not operate a backend, analytics, advertising, or tracking service. It is not affiliated with or endorsed by Telegram.
+## Analytics
+
+The product site uses Cloudflare Web Analytics for aggregate page views, visits, referrers, device information, and page-performance metrics. The Beacon is enabled only in production builds when the GitHub Actions repository variable `CLOUDFLARE_WEB_ANALYTICS_TOKEN` is configured. Local development and builds without that variable do not load analytics.
+
+Cloudflare Web Analytics does not provide App Store click events in this configuration. To disable analytics, remove the repository variable and run the GitHub Pages workflow again so the deployed static HTML is rebuilt without the Beacon.
+
+The Porthole app does not operate a developer backend or contain in-app analytics, advertising, or tracking software. The product site uses the aggregate analytics described above. Porthole is not affiliated with or endorsed by Telegram.
 
 Contact: **szlab.ai@outlook.com**
