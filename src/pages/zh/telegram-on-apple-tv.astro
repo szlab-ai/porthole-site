@@ -1,0 +1,103 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+
+const base = import.meta.env.BASE_URL;
+const appStoreURL = 'https://apps.apple.com/hk/app/porthole-tv/id6788416143';
+
+// 同 en/telegram-on-apple-tv.astro：可见正文与 FAQPage 结构化数据共用这一份数据。
+const faq = [
+  {
+    q: 'Telegram 有官方的 Apple TV 应用吗？',
+    a: '没有。Telegram 提供 iOS、Android、macOS、Windows、Linux 和网页版，但没有 tvOS 版本。PortholeTV 是基于 Telegram 官方库（TDLib）开发的独立、非官方客户端，与 Telegram 无隶属或背书关系。',
+  },
+  {
+    q: '哪些 Apple TV 机型可以运行 PortholeTV？',
+    a: '任何能运行 tvOS 17 或更高版本的 Apple TV，即 Apple TV HD（第 4 代）以及各代 Apple TV 4K。',
+  },
+  {
+    q: '登录时必须用手机吗？',
+    a: '你需要能收到 Telegram 在登录时发送的验证码。首次登录完成后，PortholeTV 即可独立使用。',
+  },
+  {
+    q: 'PortholeTV 支持群组和频道吗？',
+    a: '支持。私聊、群组和频道都在同一个列表里，任意一个都可以在大屏上打开。',
+  },
+  {
+    q: '开发者能看到我的消息吗？',
+    a: '不能。PortholeTV 直连 Telegram 服务器，开发者不运营任何服务器，也无法访问你的账户、消息或媒体。登录会话与媒体缓存只保存在你的 Apple TV 上，由 Telegram 官方的 TDLib 库管理。',
+  },
+  {
+    q: '应用里有广告、分析或追踪吗？',
+    a: '没有。PortholeTV 不含广告、第三方分析和追踪软件，也不使用广告标识符。',
+  },
+  {
+    q: '为什么应用分级是 17+？',
+    a: '因为 Telegram 上的第三方内容不受限制。这个分级反映的是你在 Telegram 里可能遇到的内容，而不是应用本身增加的内容。',
+  },
+  {
+    q: '如何举报或屏蔽内容？',
+    a: '打开某条消息，通过其操作菜单选择「举报」或「屏蔽」，也可退出会话。也可以把详情邮件发到 <a href="mailto:szlab.ai@outlook.com">szlab.ai@outlook.com</a>。',
+  },
+];
+---
+<BaseLayout
+  title="如何在 Apple TV 上看 Telegram — PortholeTV"
+  description="在 Apple TV 上看 Telegram 的完整教程：需要准备什么、如何安装 PortholeTV、如何用 Telegram 账户登录，以及如何在大屏上播放图片和视频。"
+  lang="zh"
+  page="guide"
+  faq={faq}
+  datePublished="2026-08-22"
+>
+  <Prose title="如何在 Apple TV 上看 Telegram">
+    <p>Telegram 没有官方的 Apple TV 应用。<strong>PortholeTV for Telegram</strong> 是一个独立、非官方的查看应用，用你自己的 Telegram 账户登录，把会话、群组和频道搬到大屏上 —— 图片、视频、语音消息和文档都包括在内。下面是完整的配置流程。</p>
+
+    <h2>需要准备什么</h2>
+    <ul class="list-disc space-y-1 pl-5">
+      <li>一台运行 <strong>tvOS 17 或更高版本</strong>的 Apple TV，即 Apple TV HD（第 4 代）以及各代 Apple TV 4K。</li>
+      <li>一个 <strong>Telegram 账户</strong> —— 就是你手机或电脑上正在用的那个。</li>
+      <li>从 App Store 获取 <strong>PortholeTV for Telegram</strong>。</li>
+    </ul>
+
+    <h2>第一步 &mdash; 安装 PortholeTV</h2>
+    <p>在 Apple TV 上打开 App Store，搜索 <strong>PortholeTV</strong> 并安装。你也可以先在其它设备上<a href={appStoreURL}>打开 App Store 页面</a>了解详情。</p>
+
+    <h2>第二步 &mdash; 用 Telegram 账户登录</h2>
+    <p>启动 PortholeTV，输入你 Telegram 账户绑定的手机号。Telegram 会给你发送登录验证码，用 Siri Remote 输入即可完成登录。PortholeTV 不会看到或存储你的密码。</p>
+
+    <h2>第三步 &mdash; 用 Siri Remote 浏览</h2>
+    <p>界面围绕 tvOS 的焦点交互设计：会话列表在左侧，选中的会话在右侧展开。用 Siri Remote 滑动即可在筛选器、会话和消息之间移动，点按打开。界面明暗会自动跟随你的 Apple TV 外观设置。</p>
+
+    <h2>第四步 &mdash; 在大屏上播放媒体</h2>
+    <p>选中任意图片、视频、贴纸或语音消息即可全屏打开。视频在线播放，清晰度自适应。PDF 等文档会在适配电视尺寸的阅读器中打开。</p>
+
+    <figure class="my-8">
+      <picture>
+        <source srcset={`${base}screenshots/01-big-screen.webp`} type="image/webp" />
+        <img
+          src={`${base}screenshots/01-big-screen.jpg`}
+          alt="PortholeTV 在 Apple TV 上：左侧是 Telegram 会话列表，右侧是打开的频道"
+          width="1920"
+          height="1080"
+          loading="lazy"
+          decoding="async"
+          class="aspect-video w-full rounded-2xl border border-line"
+        />
+      </picture>
+      <figcaption class="mt-2 text-sm text-muted">用 PortholeTV 在 Apple TV 上浏览 Telegram 会话与频道。</figcaption>
+    </figure>
+
+    <h2>常见问题</h2>
+    {faq.map((item) => (
+      <>
+        <h3>{item.q}</h3>
+        <p set:html={item.a} />
+      </>
+    ))}
+
+    <h2>关于隐私</h2>
+    <p>PortholeTV 只和 Telegram 通信，不和任何其它服务通信。没有开发者后端，应用内没有分析，也不收集数据。完整说明见<a href={`${base}zh/privacy/`}>隐私政策</a>；如果那里没有覆盖到，<a href={`${base}zh/support/`}>支持页</a>有联系方式。</p>
+
+    <p><a href={appStoreURL}>在 App Store 获取 PortholeTV for Telegram &rarr;</a></p>
+  </Prose>
+</BaseLayout>

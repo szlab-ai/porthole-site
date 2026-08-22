@@ -2,9 +2,10 @@ export const defaultLang = 'en' as const;
 export const ui = {
   en: {
     'nav.features':'Features','nav.support':'Support','nav.privacy':'Privacy',
+    'nav.guide':'Setup Guide',
     'hero.tagline':'Telegram, on the big screen.',
     'hero.subtitle':'An unofficial Telegram viewer for Apple TV.',
-    'hero.appStoreAlt':'Download Porthole on the App Store',
+    'hero.appStoreAlt':'Download PortholeTV for Telegram on the App Store',
     'video.heading':'See it in action',
     'features.heading':'What it does',
     'feat.browse.title':'Browse on the big screen','feat.browse.desc':'Navigate your channels and chats with the Siri Remote.',
@@ -22,9 +23,10 @@ export const ui = {
   },
   zh: {
     'nav.features':'功能','nav.support':'支持','nav.privacy':'隐私',
+    'nav.guide':'使用教程',
     'hero.tagline':'把 Telegram 搬上大屏。',
     'hero.subtitle':'Apple TV 上的非官方 Telegram 查看应用。',
-    'hero.appStoreAlt':'在 App Store 下载 Porthole',
+    'hero.appStoreAlt':'在 App Store 下载 PortholeTV for Telegram',
     'video.heading':'看它怎么用',
     'features.heading':'它能做什么',
     'feat.browse.title':'大屏浏览','feat.browse.desc':'用遥控器浏览你的频道与会话。',

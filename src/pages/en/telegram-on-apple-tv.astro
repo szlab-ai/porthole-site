@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Prose from '../../components/Prose.astro';
+
+const base = import.meta.env.BASE_URL;
+const appStoreURL = 'https://apps.apple.com/us/app/porthole-tv/id6788416143';
+
+// 可见正文与 FAQPage 结构化数据的唯一来源。
+// 每一条都必须能在 App Store 描述、隐私政策、支持页或 Apple 公开文档里找到依据 —— 不要凭印象补充。
+const faq = [
+  {
+    q: 'Is there an official Telegram app for Apple TV?',
+    a: 'No. Telegram publishes apps for iOS, Android, macOS, Windows, Linux and the web, but not for tvOS. PortholeTV is an independent, unofficial client built on Telegram’s official library (TDLib). It is not made by, affiliated with, or endorsed by Telegram.',
+  },
+  {
+    q: 'Which Apple TV models can run PortholeTV?',
+    a: 'Any Apple TV that runs tvOS 17 or later — that is Apple TV HD (4th generation) and every generation of Apple TV 4K.',
+  },
+  {
+    q: 'Do I need my phone to sign in?',
+    a: 'You need to be able to receive the login code Telegram sends when you sign in. After that first sign-in, PortholeTV works on its own.',
+  },
+  {
+    q: 'Does PortholeTV work with groups and channels?',
+    a: 'Yes. Your private chats, groups and channels all appear in the same list, and you can open any of them on the big screen.',
+  },
+  {
+    q: 'Can the developer see my messages?',
+    a: 'No. PortholeTV connects directly to Telegram’s servers. The developer operates no servers and has no access to your account, messages or media. Your login session and cached media stay on the Apple TV, managed by Telegram’s official TDLib library.',
+  },
+  {
+    q: 'Does the app contain ads, analytics or tracking?',
+    a: 'No. PortholeTV contains no advertising, no third-party analytics and no tracking software, and it uses no advertising identifier.',
+  },
+  {
+    q: 'Why is the app rated 17+?',
+    a: 'Because Telegram carries unrestricted third-party content. The rating reflects what you may encounter inside Telegram itself, not anything the app adds.',
+  },
+  {
+    q: 'How do I report or block something?',
+    a: 'Open the message and use its action menu to Report or Block, or leave the chat. You can also email details to <a href="mailto:szlab.ai@outlook.com">szlab.ai@outlook.com</a>.',
+  },
+];
+---
+<BaseLayout
+  title="How to Watch Telegram on Apple TV — PortholeTV"
+  description="A step-by-step guide to watching Telegram on Apple TV: what you need, how to install PortholeTV, how to sign in with your Telegram account, and how to play photos and videos on the big screen."
+  lang="en"
+  page="guide"
+  faq={faq}
+  datePublished="2026-08-22"
+>
+  <Prose title="How to Watch Telegram on Apple TV">
+    <p>Telegram does not publish an official Apple TV app. <strong>PortholeTV for Telegram</strong> is an independent, unofficial viewer that signs in with your own Telegram account and puts your chats, groups and channels on the big screen &mdash; photos, videos, voice messages and documents included. Here is the whole setup, start to finish.</p>
+
+    <h2>What you need</h2>
+    <ul class="list-disc space-y-1 pl-5">
+      <li>An Apple TV running <strong>tvOS 17 or later</strong>. That covers Apple TV HD (4th generation) and every generation of Apple TV 4K.</li>
+      <li>A <strong>Telegram account</strong> &mdash; the same one you already use on your phone or desktop.</li>
+      <li><strong>PortholeTV for Telegram</strong> from the App Store.</li>
+    </ul>
+
+    <h2>Step 1 &mdash; Install PortholeTV</h2>
+    <p>On your Apple TV, open the App Store, search for <strong>PortholeTV</strong>, and install it. You can also <a href={appStoreURL}>open the App Store listing</a> on another device first to read the details.</p>
+
+    <h2>Step 2 &mdash; Sign in with your Telegram account</h2>
+    <p>Launch PortholeTV and enter the phone number attached to your Telegram account. Telegram sends you a login code; type it in with the Siri Remote and you are in. PortholeTV never sees or stores your password.</p>
+
+    <h2>Step 3 &mdash; Find your way around with the Siri Remote</h2>
+    <p>The interface is built around tvOS focus. Your chat list sits on the left, and the conversation you select opens on the right. Swipe on the Siri Remote to move between filters, chats and messages, then click to open one. The layout follows your Apple TV&rsquo;s light or dark appearance automatically.</p>
+
+    <h2>Step 4 &mdash; Play media on the big screen</h2>
+    <p>Select any photo, video, sticker or voice message to open it full screen. Video plays online with adaptive quality. PDFs and other documents open in a reader sized for the TV.</p>
+
+    <figure class="my-8">
+      <picture>
+        <source srcset={`${base}screenshots/01-big-screen.webp`} type="image/webp" />
+        <img
+          src={`${base}screenshots/01-big-screen.jpg`}
+          alt="PortholeTV on Apple TV: the Telegram chat list on the left and an open channel on the right"
+          width="1920"
+          height="1080"
+          loading="lazy"
+          decoding="async"
+          class="aspect-video w-full rounded-2xl border border-line"
+        />
+      </picture>
+      <figcaption class="mt-2 text-sm text-muted">Browsing Telegram chats and channels on Apple TV with PortholeTV.</figcaption>
+    </figure>
+
+    <h2>Frequently asked questions</h2>
+    {faq.map((item) => (
+      <>
+        <h3>{item.q}</h3>
+        <p set:html={item.a} />
+      </>
+    ))}
+
+    <h2>A note on privacy</h2>
+    <p>PortholeTV talks to Telegram and to nothing else. There is no developer backend, no analytics inside the app and no data collection. The full details are in the <a href={`${base}en/privacy/`}>privacy policy</a>; if something is not covered there, <a href={`${base}en/support/`}>support</a> has contact details.</p>
+
+    <p><a href={appStoreURL}>Get PortholeTV for Telegram on the App Store &rarr;</a></p>
+  </Prose>
+</BaseLayout>

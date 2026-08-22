@@ -1,11 +1,33 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Prose from '../../components/Prose.astro';
+
+// 同 en/support.astro：可见正文与 FAQPage 结构化数据共用这一份数据。
+const faq = [
+  {
+    q: '如何登录？',
+    a: 'Porthole 使用你已有的 Telegram 账户。首次启动时输入手机号及 Telegram 发送的登录验证码。Porthole 不会看到或存储你的密码。',
+  },
+  {
+    q: '如何举报或屏蔽内容？',
+    a: '打开某条消息，通过其操作菜单选择<em>举报</em>或<em>屏蔽</em>，也可退出会话。不良内容也可邮件反馈给我们。',
+  },
+  {
+    q: '运行 Porthole 需要什么？',
+    a: '一台运行 tvOS 17 或更高版本的 Apple TV，以及一个 Telegram 账户。',
+  },
+  {
+    q: '这是官方 Telegram 应用吗？',
+    a: '不是。Porthole 是独立、非官方的客户端，与 Telegram 无隶属或背书关系。',
+  },
+];
 ---
 <BaseLayout
-  title="支持 — Porthole"
-  description="获取 Porthole Apple TV 版的登录、运行要求、举报与联系支持信息。"
+  title="支持 — Apple TV 版 PortholeTV"
+  description="获取 Porthole 的使用帮助：这是 Apple TV 上的非官方 Telegram 查看应用，涵盖登录方式、tvOS 运行要求、举报内容与联系方式。"
   lang="zh"
+  page="support"
+  faq={faq}
 >
   <Prose title="支持">
     <p class="text-sm text-muted">Apple TV 上的非官方 Telegram 查看应用</p>
@@ -16,17 +38,12 @@ import Prose from '../../components/Prose.astro';
 
     <h2>常见问题</h2>
 
-    <h3>如何登录？</h3>
-    <p>Porthole 使用你已有的 Telegram 账户。首次启动时输入手机号及 Telegram 发送的登录验证码。Porthole 不会看到或存储你的密码。</p>
-
-    <h3>如何举报或屏蔽内容？</h3>
-    <p>打开某条消息，通过其操作菜单选择<em>举报</em>或<em>屏蔽</em>，也可退出会话。不良内容也可邮件反馈给我们。</p>
-
-    <h3>运行 Porthole 需要什么？</h3>
-    <p>一台运行 tvOS 17 或更高版本的 Apple TV，以及一个 Telegram 账户。</p>
-
-    <h3>这是官方 Telegram 应用吗？</h3>
-    <p>不是。Porthole 是独立、非官方的客户端，与 Telegram 无隶属或背书关系。</p>
+    {faq.map((item) => (
+      <>
+        <h3>{item.q}</h3>
+        <p set:html={item.a} />
+      </>
+    ))}
 
     <h2>举报不良内容</h2>
     <p>请使用应用内的举报/屏蔽功能，或邮件联系 <a href="mailto:szlab.ai@outlook.com">szlab.ai@outlook.com</a> 并附上详情。我们会及时处理。</p>
